@@ -1,9 +1,13 @@
 package application;
 
+import boardgame.Position;
+
 public class Progran {
 
 	public static void main(String[] args) {
-		System.out.println("Olá, Mundo");
+		
+		Position pos = new Position(3, 5);
+		System.out.println(pos);
 
 	}
 
