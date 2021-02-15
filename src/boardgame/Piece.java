@@ -20,16 +20,15 @@ public abstract class Piece {
 		return possibleMoves()[position.getRow()][position.getColumn()];
 	}
 	
-	public boolean isThereAnyPositionMove() {
-		boolean [][] mat = possibleMoves();
-		for (int x = 1; x<mat.length; x++) {
-			for(int y = 1; y<mat.length; y++) {
-				if(mat[x][y]) {
+	public boolean isThereAnyPossibleMove() {
+		boolean[][] mat = possibleMoves();
+		for (int i=0; i<mat.length; i++) {
+			for (int j=0; j<mat.length; j++) {
+				if (mat[i][j]) {
 					return true;
 				}
 			}
 		}
 		return false;
 	}
-	
 }
