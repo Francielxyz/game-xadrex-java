@@ -34,17 +34,21 @@ public class Program {
 				ChessPosition target = UI.readChessPosition(sc);
 
 				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
-				
-				if(capturedPiece !=  null) {
+
+				if (capturedPiece != null) {
 					captured.add(capturedPiece);
 				}
-				
+
 				if (chessMatch.getPromoted() != null) {
 					System.out.print("Digite a peça a ser promovida (B/C/T/R): ");
-					String type = sc.nextLine();
-					chessMatch.replacePromotedPiece(type);
+					String type = sc.nextLine().toUpperCase();
+					while (!type.equals("B") && !type.equals("C") && !type.equals("T") & !type.equals("R")) {
+						System.out.print("Valor invalido! Digite a peça a ser promovida (B/C/T/R):: ");
+						type = sc.nextLine().toUpperCase();
+					}
+
 				}
-				
+
 			} catch (ChessException e) {
 				System.out.println(e.getMessage());
 				sc.nextLine();

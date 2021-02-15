@@ -47,7 +47,7 @@ public class UI {
 			int row = Integer.parseInt(s.substring(1));
 			return new ChessPosition(column, row);
 		} catch (RuntimeException e) {
-			throw new InputMismatchException("Error reading ChessPosition. Valid values are from a1 to h8.");
+			throw new InputMismatchException("Erro na posica. Por favor escolha uma peca entre a1 e h8.");
 		}
 	}
 
@@ -58,13 +58,13 @@ public class UI {
 		System.out.println();
 		System.out.println("Turn : " + chessMatch.getTurn());
 		if (!chessMatch.getCheckMate()) {
-			System.out.println("Waiting player: " + chessMatch.getCurrentPlayer());
+			System.out.println("Esperando jogador: " + chessMatch.getCurrentPlayer());
 			if (chessMatch.getCheck()) {
 				System.out.println("CHECK!");
 			}
 		} else {
 			System.out.println("CHECKMATE!");
-			System.out.println("Winner: " + chessMatch.getCurrentPlayer());
+			System.out.println("Vitoria : " + chessMatch.getCurrentPlayer());
 		}
 	}
 
@@ -111,12 +111,12 @@ public class UI {
 				.collect(Collectors.toList());
 		List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLAKC)
 				.collect(Collectors.toList());
-		System.out.println("Captured pieces:");
-		System.out.print("White: ");
+		System.out.println("Pecas capturadas:");
+		System.out.print("Branca: ");
 		System.out.print(ANSI_WHITE);
 		System.out.println(Arrays.toString(white.toArray()));
 		System.out.print(ANSI_RESET);
-		System.out.print("Black: ");
+		System.out.print("Pretas: ");
 		System.out.print(ANSI_YELLOW);
 		System.out.println(Arrays.toString(black.toArray()));
 		System.out.print(ANSI_RESET);

@@ -1,6 +1,5 @@
 package chess;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -123,7 +122,7 @@ public class ChessMatch {
 			throw new IllegalStateException("Nao existe peca para ser promovida");
 		}
 		if (!type.equals("B") && !type.equals("C") && !type.equals("T") & !type.equals("R")) {
-			throw new InvalidParameterException("Peca invalida para ser promovida");
+			return promoted;
 		}
 		
 		Position pos = promoted.getChessPosition().toPosition();
@@ -239,19 +238,19 @@ public class ChessMatch {
 	
 	private void validateSourcePosition(Position position) {
 		if (!board.thereIsAPiece(position)) {
-			throw new ChessException("There is no piece on source position");
+			throw new ChessException("Nao existe peca nesta posicao");
 		}
 		if (currentPlayer != ((ChessPiece)board.piece(position)).getColor()) {
-			throw new ChessException("The chosen piece is not yours");
+			throw new ChessException("A peca escolhida nao e sua");
 		}
 		if (!board.piece(position).isThereAnyPossibleMove()) {
-			throw new ChessException("There is no possible moves for the chosen piece");
+			throw new ChessException("Nao existe movimento possiveis para esta peca");
 		}
 	}
 	
 	private void validateTargetPosition(Position source, Position target) {
 		if (!board.piece(source).possibleMove(target)) {
-			throw new ChessException("The chosen piece can't move to target position");
+			throw new ChessException("A peca escolhida nao pode ser movida pra o local desejado");
 		}
 	}
 	
@@ -271,7 +270,7 @@ public class ChessMatch {
 				return (ChessPiece)p;
 			}
 		}
-		throw new IllegalStateException("There is no " + color + " king on the board");
+		throw new IllegalStateException("Aqui nao tem um rei na cor " + color + " no tabuleiro");
 	}
 	
 	private boolean testCheck(Color color) {

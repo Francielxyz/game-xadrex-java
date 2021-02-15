@@ -9,7 +9,7 @@ public class ChessPosition {
 	
 	public ChessPosition(char column, int row) {
 		if(column < 'a' || column > 'h' || row < 1 || row > 8) {
-			throw new ChessException("Erro instanciando ChessPosition. Valores devem estar entre a1 e h8");
+			throw new ChessException("Erro no instanciamento da partida de xadrex. Valores devem estar entre a1 e h8");
 		}
 		this.column = column;
 		this.row = row;
